@@ -64,6 +64,18 @@ find_free_port() {
 ensure_dependencies() {
   local workdir="$1"
   local name="$2"
+
+  if ! node -e '
+    const fs = require("node:fs");
+    const path = process.argv[1];
+    const pkg = JSON.parse(fs.readFileSync(path, "utf8"));
+    const fields = ["dependencies", "devDependencies", "optionalDependencies", "peerDependencies"];
+    const hasDeps = fields.some((field) => pkg[field] && Object.keys(pkg[field]).length > 0);
+    process.exit(hasDeps ? 0 : 1);
+  ' "$workdir/package.json"; then
+    return 0
+  fi
+
   if [[ ! -d "$workdir/node_modules" ]]; then
     echo "[$name] node_modules 不存在，正在执行 npm install..."
     (cd "$workdir" && npm install)
@@ -117,6 +129,11 @@ cleanup_stale() {
 
   saved_pid="$(read_pid "$pid_file")"
   current_port="$(meta_get "$meta_file" "PORT")"
+
+  if pid_running "$saved_pid"; then
+    sync_pid_metadata "$pid_file" "$meta_file" "$saved_pid"
+    return 0
+  fi
 
   if [[ -n "$current_port" ]]; then
     current_pid="$(port_pid "$current_port")"
@@ -179,10 +196,12 @@ start_mock() {
     current_pid="$(port_pid "$existing_port")"
   fi
 
-  if [[ -n "$existing_pid" && -n "$existing_port" && "$existing_pid" == "$current_pid" ]]; then
-    echo "[mock-server] 已在运行：http://${MOCK_HOST}:${existing_port}"
-    MOCK_RUNNING_PORT="$existing_port"
-    return 0
+  if [[ -n "$existing_port" && -n "$current_pid" ]]; then
+    if [[ "$existing_pid" == "$current_pid" ]] || pid_running "$existing_pid"; then
+      echo "[mock-server] 已在运行：http://${MOCK_HOST}:${existing_port}"
+      MOCK_RUNNING_PORT="$existing_port"
+      return 0
+    fi
   fi
 
   actual_port="$(resolve_port "$MOCK_PORT" "mock-server")"
@@ -195,7 +214,6 @@ start_mock() {
   )
   wait_until_port_listens "$actual_port" "$MOCK_LOG_FILE" "mock-server"
   write_meta "$MOCK_META_FILE" "mock-server" "$(read_pid "$MOCK_PID_FILE")" "$MOCK_HOST" "$actual_port" "$MOCK_LOG_FILE"
-  sync_pid_metadata "$MOCK_PID_FILE" "$MOCK_META_FILE" "$(port_pid "$actual_port")"
   echo "[mock-server] 启动成功：http://${MOCK_HOST}:${actual_port}"
   MOCK_RUNNING_PORT="$actual_port"
 }
@@ -212,10 +230,12 @@ start_web() {
     current_pid="$(port_pid "$existing_port")"
   fi
 
-  if [[ -n "$existing_pid" && -n "$existing_port" && "$existing_pid" == "$current_pid" ]]; then
-    echo "[web] 已在运行：http://localhost:${existing_port}"
-    WEB_RUNNING_PORT="$existing_port"
-    return 0
+  if [[ -n "$existing_port" && -n "$current_pid" ]]; then
+    if [[ "$existing_pid" == "$current_pid" ]] || pid_running "$existing_pid"; then
+      echo "[web] 已在运行：http://localhost:${existing_port}"
+      WEB_RUNNING_PORT="$existing_port"
+      return 0
+    fi
   fi
 
   actual_port="$(resolve_port "$WEB_PORT" "web")"
@@ -228,7 +248,6 @@ start_web() {
   )
   wait_until_port_listens "$actual_port" "$WEB_LOG_FILE" "web"
   write_meta "$WEB_META_FILE" "web" "$(read_pid "$WEB_PID_FILE")" "$WEB_HOST" "$actual_port" "$WEB_LOG_FILE"
-  sync_pid_metadata "$WEB_PID_FILE" "$WEB_META_FILE" "$(port_pid "$actual_port")"
   echo "[web] 启动成功：http://localhost:${actual_port}"
   WEB_RUNNING_PORT="$actual_port"
 }

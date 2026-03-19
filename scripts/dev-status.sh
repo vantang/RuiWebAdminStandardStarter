@@ -18,6 +18,18 @@ WEB_META_FILE="$SERVICE_DIR/web.env"
 MOCK_LOG_FILE="$LOG_DIR/mock-server.log"
 WEB_LOG_FILE="$LOG_DIR/web.log"
 
+read_pid() {
+  local pid_file="$1"
+  if [[ -f "$pid_file" ]]; then
+    tr -d '[:space:]' < "$pid_file"
+  fi
+}
+
+pid_running() {
+  local pid="$1"
+  [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null
+}
+
 port_pid() {
   local port="$1"
   if command -v lsof >/dev/null 2>&1; then
@@ -39,14 +51,16 @@ print_status() {
   local fallback_host="$4"
   local fallback_port="$5"
   local fallback_log="$6"
-  local expected_pid=""
+  local recorded_pid=""
+  local managed_pid=""
   local current_port=""
   local current_host=""
   local current_log=""
   local current_pid=""
 
-  if [[ -f "$pid_file" ]]; then
-    expected_pid="$(tr -d '[:space:]' < "$pid_file")"
+  recorded_pid="$(read_pid "$pid_file")"
+  if pid_running "$recorded_pid"; then
+    managed_pid="$recorded_pid"
   fi
 
   current_host="$(meta_get "$meta_file" "HOST")"
@@ -58,16 +72,27 @@ print_status() {
   current_log="${current_log:-$fallback_log}"
   current_pid="$(port_pid "$current_port")"
 
-  if [[ -n "$expected_pid" && -n "$current_pid" && "$expected_pid" == "$current_pid" ]]; then
-    echo "[${service_name}] 运行中，PID=${expected_pid}，地址=http://${current_host}:${current_port}，日志=${current_log}"
+  if [[ -n "$managed_pid" && -n "$current_pid" ]]; then
+    if [[ "$managed_pid" == "$current_pid" ]]; then
+      echo "[${service_name}] 运行中，PID=${managed_pid}，地址=http://${current_host}:${current_port}，日志=${current_log}"
+      return 0
+    fi
+
+    echo "[${service_name}] 运行中，托管 PID=${managed_pid}，监听 PID=${current_pid}，地址=http://${current_host}:${current_port}，日志=${current_log}"
+    return 0
+  fi
+
+  if [[ -n "$managed_pid" ]]; then
+    echo "[${service_name}] 托管进程运行中，PID=${managed_pid}，端口 ${current_port} 暂未监听，日志=${current_log}"
     return 0
   fi
 
   if [[ -n "$current_pid" ]]; then
-    if [[ -n "$expected_pid" ]]; then
-      echo "[${service_name}] 端口 ${current_port} 已监听，当前 PID=${current_pid}，PID 文件记录=${expected_pid}，日志=${current_log}"
+    if [[ -n "$recorded_pid" ]]; then
+      echo "[${service_name}] 端口 ${current_port} 已监听，当前 PID=${current_pid}，托管 PID=${recorded_pid} 已失效，日志=${current_log}"
       return 0
     fi
+
     echo "[${service_name}] 地址 http://${current_host}:${current_port} 已被 PID=${current_pid} 占用，但不是脚本托管进程"
     return 0
   fi
