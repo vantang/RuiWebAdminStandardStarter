@@ -80,6 +80,22 @@
 - 文档页示例：模板说明、规范入口、目录映射
 - 独立 Mock 服务：演示前后端分离结构和基础接口组织方式
 
+## 界面预览
+
+以下截图来自当前主干 DEMO 的真实运行界面，便于快速判断这套模板的可复用程度和页面风格。
+
+| 登录页 | 工作台 Dashboard |
+| --- | --- |
+| ![登录页预览](./output/playwright/brand-login.png) | ![工作台预览](./output/playwright/brand-dashboard.png) |
+
+| 用户管理页 | 表单页示例 |
+| --- | --- |
+| ![用户管理页预览](./output/playwright/users-page.png) | ![表单页预览](./output/playwright/form.png) |
+
+| 列表页示例 | 详情页示例 |
+| --- | --- |
+| ![列表页预览](./output/playwright/list.png) | ![详情页预览](./output/playwright/detail.png) |
+
 ## 项目内置 Skills
 
 本仓库内置了 3 个项目级 AI 协作 skill，适合在支持项目内 skills 的 Codex / Agent 环境中显式调用：
