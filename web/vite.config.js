@@ -23,6 +23,10 @@ export default defineConfig({
             return "element-plus-icons";
           }
 
+          if (id.includes("echarts")) {
+            return "echarts";
+          }
+
           if (id.includes("element-plus")) {
             const componentMatch = id.match(/element-plus\/es\/components\/([^/]+)/);
             const componentName = componentMatch?.[1];

@@ -99,6 +99,17 @@ const routes = [
         },
       },
       {
+        path: "/examples/visualization",
+        name: "example-visualization",
+        component: () => import("@/views/examples/VisualizationView.vue"),
+        meta: {
+          requiresAuth: true,
+          permission: "examples.view",
+          title: "数据可视化页示例",
+          subtitle: "常用图表类型、仪表盘拼装方式与选型建议",
+        },
+      },
+      {
         path: "/management/users",
         name: "management-users",
         component: () => import("@/views/management/UsersView.vue"),

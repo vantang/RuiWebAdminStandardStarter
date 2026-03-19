@@ -7,6 +7,7 @@
 - Vue 3
 - Vite
 - Element Plus
+- Apache ECharts
 - Vue Router
 - Pinia
 
@@ -17,6 +18,7 @@
 - `/examples/form` 表单页示例
 - `/examples/detail` 详情页示例
 - `/examples/components` 组件页示例
+- `/examples/visualization` 数据可视化页示例
 - `/docs/guide` 文档与规范中心
 
 ## 使用原则

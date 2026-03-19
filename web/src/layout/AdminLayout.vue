@@ -40,6 +40,7 @@ const menuGroups = [
       { index: "/examples/form", title: "表单页示例", icon: EditPen },
       { index: "/examples/detail", title: "详情页示例", icon: Grid },
       { index: "/examples/components", title: "组件页示例", icon: SetUp },
+      { index: "/examples/visualization", title: "数据可视化页示例", icon: DataAnalysis },
     ],
   },
   {
