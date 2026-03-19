@@ -7,7 +7,7 @@
 主干目标不是承载某个具体业务，而是固化一套可以反复起项目的后台标准：
 
 - 技术栈基线：`Vue 3 + Vite + Element Plus + Apache ECharts + Pinia + Vue Router`
-- 结构基线：`web + mock-server + docs`
+- 结构基线：`web + mock-server + docs + site`
 - 设计基线：后台布局、卡片、表格、表单、详情、组件展示
 - 文档基线：规范说明、技术方案、接口示例、模板文档
 
@@ -65,6 +65,7 @@
 │   └── README.md           # 文档目录总览
 ├── mock-server             # 通用后台 DEMO Mock API
 ├── scripts                 # 一键启动、停止、状态检查脚本
+├── site                    # 对外官网 landing page（GitHub Pages）
 └── web                     # Vue 后台前端 DEMO
 ```
 
@@ -81,6 +82,7 @@
 - 账号入口示例：右上角紧凑账号下拉、个人中心、修改密码
 - 文档页示例：模板说明、规范入口、目录映射
 - 独立 Mock 服务：演示前后端分离结构和基础接口组织方式
+- 独立官网 landing page：用于 GitHub 仓库展示和对外介绍
 
 ## 界面预览
 
@@ -97,6 +99,21 @@
 | 列表页示例 | 详情页示例 |
 | --- | --- |
 | ![列表页预览](./docs/assets/screenshots/list.png) | ![详情页预览](./docs/assets/screenshots/detail.png) |
+
+## 官网 Landing Page
+
+仓库已提供一个独立静态官网目录：`site/`。
+
+这个目录的职责不是承载后台业务逻辑，而是作为仓库的对外展示层，用于：
+
+- 说明这套底座适合谁、解决什么问题
+- 展示真实界面截图和能力边界
+- 为 GitHub、文档、启动说明提供统一入口
+- 通过 GitHub Pages 发布一个简单官网
+
+仓库同时提供了 GitHub Actions 工作流：`.github/workflows/deploy-site.yml`。
+
+如果你希望把官网发布到 GitHub Pages，建议在仓库 `Settings -> Pages` 中把发布源切到 `GitHub Actions`。工作流会直接发布 `site/` 目录内容。
 
 ## 项目内置 Skills
 
@@ -151,9 +168,10 @@ bash ./scripts/dev-start.sh
 
 ```bash
 cd /path/to/RuiWebAdminStandardStarter/mock-server
-npm install
 npm run dev
 ```
+
+说明：当前 `mock-server` 无第三方运行时依赖，`npm install` 可省略。
 
 ### 单独启动前端
 

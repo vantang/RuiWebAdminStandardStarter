@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>睿境管理后台标准底座</title>
+    <meta
+      name="description"
+      content="为产品经理、人类团队与 AI Agent 准备的管理后台标准底座。用可运行的页面模式、Mock API 与规范文档，更快做出精美后台原型。"
+    />
+    <meta
+      name="keywords"
+      content="管理后台,后台模板,后台原型,Vue 3,Vite,Element Plus,产品经理,AI Agent,GitHub Pages"
+    />
+    <meta property="og:title" content="睿境管理后台标准底座" />
+    <meta
+      property="og:description"
+      content="用可运行的页面模式、Mock API 与规范文档，更快做出精美后台原型。"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./assets/screenshots/brand-dashboard.png" />
+    <link rel="alternate" hreflang="zh-CN" href="./index.html" />
+    <link rel="alternate" hreflang="en" href="./en.html" />
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="睿境管理后台标准底座首页">
+          <span class="brand-mark">R</span>
+          <span class="brand-copy">
+            <strong>睿境管理后台标准底座</strong>
+            <span>RUI Open-Ready Admin Foundation</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="主要导航">
+          <a href="#why">为什么</a>
+          <a href="#proof">界面</a>
+          <a href="#start">开始使用</a>
+          <a
+            class="nav-cta"
+            href="https://github.com/vantang/RuiWebAdminStandardStarter"
+            target="_blank"
+            rel="noreferrer"
+            >GitHub</a
+          >
+        </nav>
+        <div class="lang-switch" aria-label="语言切换">
+          <a class="is-active" href="./index.html">中文</a>
+          <a href="./en.html">EN</a>
+        </div>
+      </header>
+
+      <main id="top">
+        <section class="hero section-grid">
+          <div class="hero-copy" data-reveal>
+            <p class="eyebrow">为产品经理、人类团队与 AI Agent 准备</p>
+            <h1>更快做出管理后台原型</h1>
+            <p class="hero-text">
+              这不是散装组件集合，而是一套可直接运行的后台底座。页面模式、Mock API、设计规范和协作文档已经配齐，适合从需求评审一路走到原型落地。
+            </p>
+            <div class="hero-actions">
+              <a
+                class="button button-primary"
+                href="https://github.com/vantang/RuiWebAdminStandardStarter"
+                target="_blank"
+                rel="noreferrer"
+                >查看 GitHub</a
+              >
+              <a
+                class="button button-secondary"
+                href="https://github.com/vantang/RuiWebAdminStandardStarter/tree/main/docs"
+                target="_blank"
+                rel="noreferrer"
+                >阅读文档</a
+              >
+              <a class="button button-ghost" href="#start">5 分钟启动</a>
+            </div>
+            <ul class="hero-tags" aria-label="核心标签">
+              <li>Apache-2.0</li>
+              <li>Vue 3 + Vite</li>
+              <li>Element Plus</li>
+              <li>Mock API</li>
+              <li>Docs Ready</li>
+              <li>AI Friendly</li>
+            </ul>
+          </div>
+
+          <div class="hero-visual" data-reveal>
+            <figure class="hero-shot-card">
+              <div class="hero-shot-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <img src="./assets/screenshots/brand-dashboard.png" alt="后台 Dashboard 预览" />
+              <figcaption class="hero-shot-caption">
+                <strong>真实运行界面</strong>
+                <span>工作台 Dashboard，来自当前主干 DEMO</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="why" class="content-section">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">为什么做它</p>
+            <h2>让原型更快接近成品</h2>
+            <p>
+              它适合想把后台需求讲清楚、演出来、再交给研发或 AI 继续往前推进的人。产品经理可以更快做出可信原型，前端可以从稳定骨架起步，AI
+              Agent 可以直接读取仓库结构、规范和内置 skills。
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card" data-reveal>
+              <h3>完整后台骨架，不是散装组件</h3>
+              <p>
+                登录、Dashboard、列表、表单、详情、可视化、管理页和文档页都已经形成模式，适合直接替换业务名词继续推进。
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3>既能演示，也能继续开发</h3>
+              <p>
+                `web + mock-server + docs`
+                的三段式结构把可视化效果、接口联调和交付说明放在一起，避免“演示版”与“开发版”脱节。
+              </p>
+            </article>
+            <article class="feature-card" data-reveal>
+              <h3>对 AI 协作天然友好</h3>
+              <p>
+                仓库已经声明允许 AI
+                读取、分析、修改与生成衍生内容，并内置面向产品、开发、测试的项目级 skills。
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section tinted-section">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">你会拿到什么</p>
+            <h2>页面、接口与文档，一次配齐</h2>
+          </div>
+
+          <div class="capability-grid">
+            <article class="capability-card" data-reveal>
+              <span>01</span>
+              <h3>后台页面模式</h3>
+              <p>工作台、列表、表单、详情、组件展示、可视化等页面模式可直接复用。</p>
+            </article>
+            <article class="capability-card" data-reveal>
+              <span>02</span>
+              <h3>可运行前端 DEMO</h3>
+              <p>Vue 3 + Vite + Element Plus 的标准实现，结构稳定，适合二次开发。</p>
+            </article>
+            <article class="capability-card" data-reveal>
+              <span>03</span>
+              <h3>轻量 Mock Server</h3>
+              <p>使用 Node.js 原生 HTTP 模拟接口，适合前后端分离演示与早期联调。</p>
+            </article>
+            <article class="capability-card" data-reveal>
+              <span>04</span>
+              <h3>规范与模板文档</h3>
+              <p>技术规范、设计规范、API 示例、需求模板和测试模板全部在仓库内闭环。</p>
+            </article>
+            <article class="capability-card" data-reveal>
+              <span>05</span>
+              <h3>开源协作基础设施</h3>
+              <p>许可证、行为准则、支持说明、Issue 模板、PR 模板已经就位，适合公开协作。</p>
+            </article>
+            <article class="capability-card" data-reveal>
+              <span>06</span>
+              <h3>面向 AI 的项目级 Skills</h3>
+              <p>支持把需求拆解、页面开发、测试回归直接映射到可执行工作流，减少反复解释。</p>
+            </article>
+          </div>
+        </section>
+
+        <section id="proof" class="content-section">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">真实界面</p>
+            <h2>仓库里已经能跑起来的真实界面</h2>
+            <p>以下截图来自当前主干 DEMO，可左右滚动查看完整界面，不再对原图做强行裁切。</p>
+          </div>
+
+          <div class="showcase-grid">
+            <figure class="showcase-card" data-reveal>
+              <div class="showcase-media">
+                <img src="./assets/screenshots/brand-dashboard.png" alt="工作台 Dashboard 预览" />
+              </div>
+              <figcaption>
+                <strong>工作台 Dashboard</strong>
+                <span>指标、趋势、任务与状态模块在同一页建立信息节奏。</span>
+              </figcaption>
+            </figure>
+            <figure class="showcase-card" data-reveal>
+              <div class="showcase-media">
+                <img src="./assets/screenshots/users-page.png" alt="用户管理页预览" />
+              </div>
+              <figcaption>
+                <strong>用户管理</strong>
+                <span>筛选、表格、标签、分页与抽屉操作保持标准后台节奏。</span>
+              </figcaption>
+            </figure>
+            <figure class="showcase-card" data-reveal>
+              <div class="showcase-media">
+                <img src="./assets/screenshots/brand-login.png" alt="登录页预览" />
+              </div>
+              <figcaption>
+                <strong>登录页</strong>
+                <span>品牌头图、欢迎信息与表单区保持清晰分层，适合快速换皮。</span>
+              </figcaption>
+            </figure>
+            <figure class="showcase-card" data-reveal>
+              <div class="showcase-media">
+                <img src="./assets/screenshots/form.png" alt="表单页示例预览" />
+              </div>
+              <figcaption>
+                <strong>表单页示例</strong>
+                <span>分组卡片、校验与提交反馈适合真实业务表单替换。</span>
+              </figcaption>
+            </figure>
+            <figure class="showcase-card" data-reveal>
+              <div class="showcase-media">
+                <img src="./assets/screenshots/detail.png" alt="详情页示例预览" />
+              </div>
+              <figcaption>
+                <strong>详情页示例</strong>
+                <span>摘要、基础信息、时间线与附件区形成稳定详情模式。</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="content-section split-section">
+          <div class="split-card" data-reveal>
+            <p class="eyebrow">适合谁</p>
+            <h2>最适合这些场景</h2>
+            <ul class="bullet-list">
+              <li>产品经理快速搭管理后台原型并做需求评审</li>
+              <li>团队用统一骨架起一个新管理后台项目</li>
+              <li>前端需要一个可复用的后台布局和页面模式样板</li>
+              <li>AI Agent 需要一个结构清晰、文档齐全、允许协作的仓库</li>
+              <li>运营后台、审批后台、配置中心和数据看板型中后台</li>
+            </ul>
+          </div>
+          <div class="split-card split-card-muted" data-reveal>
+            <p class="eyebrow">不建议直接用于</p>
+            <h2>这些场景需要别的起点</h2>
+            <ul class="bullet-list">
+              <li>C 端营销页面与强品牌官网</li>
+              <li>依赖复杂富文本或自定义画布的编辑器型产品</li>
+              <li>把一个业务系统的专有流程硬塞进模板主干</li>
+              <li>需要高度品牌定制、重动效或讲故事型叙事站点</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="start" class="content-section cta-section">
+          <div class="section-heading" data-reveal>
+            <p class="eyebrow">开始使用</p>
+            <h2>三步，把后台原型跑起来</h2>
+          </div>
+
+          <div class="start-layout">
+            <article class="terminal-card" data-reveal>
+              <div class="terminal-bar">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <pre><code>git clone git@github.com:vantang/RuiWebAdminStandardStarter.git
+cd RuiWebAdminStandardStarter
+npm run dev:start</code></pre>
+            </article>
+            <div class="start-steps" data-reveal>
+              <ol class="ordered-list">
+                <li>先跑起现有 DEMO，用真实截图和交互去校准需求。</li>
+                <li>保留骨架与规范，用业务页面替换 `web/src/views/examples`。</li>
+                <li>前期继续用 `mock-server` 联调，后期再替换成真实后端。</li>
+              </ol>
+              <div class="start-actions">
+                <a
+                  class="button button-primary"
+                  href="https://github.com/vantang/RuiWebAdminStandardStarter#启动"
+                  target="_blank"
+                  rel="noreferrer"
+                  >查看启动说明</a
+                >
+                <a
+                  class="button button-secondary"
+                  href="https://github.com/vantang/RuiWebAdminStandardStarter/tree/main/docs/templates"
+                  target="_blank"
+                  rel="noreferrer"
+                  >查看文档模板</a
+                >
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <div>
+          <strong>睿境管理后台标准底座</strong>
+          <p>为全人类与全 AI 提供一套更快做出精美管理后台原型的起点。</p>
+        </div>
+        <div class="footer-links">
+          <a class="footer-lang" href="./en.html">English</a>
+          <a href="https://github.com/vantang/RuiWebAdminStandardStarter" target="_blank" rel="noreferrer"
+            >GitHub</a
+          >
+          <a
+            href="https://github.com/vantang/RuiWebAdminStandardStarter/tree/main/docs"
+            target="_blank"
+            rel="noreferrer"
+            >Docs</a
+          >
+          <a href="https://github.com/vantang/RuiWebAdminStandardStarter/blob/main/LICENSE" target="_blank" rel="noreferrer"
+            >License</a
+          >
+        </div>
+      </footer>
+    </div>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

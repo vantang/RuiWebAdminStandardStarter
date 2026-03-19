@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>RUI Admin Foundation</title>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c45b31" />
+      <stop offset="100%" stop-color="#ef8c57" />
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="18" fill="url(#g)" />
+  <path
+    d="M20 18h14.8c9 0 14.2 4.2 14.2 11.9 0 5.4-2.9 9.1-7.9 10.8L48 46H36.9l-5.4-4.6h-2.8V46H20V18Zm13.5 16.1c4.1 0 6.4-1.4 6.4-4.2s-2.3-4.2-6.4-4.2h-4.8v8.4h4.8Z"
+    fill="#fff9f2"
+  />
+</svg>
