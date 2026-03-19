@@ -1,0 +1,92 @@
+name: Bug report
+description: 报告一个可复现的问题，帮助维护者快速定位。
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        提交前请先确认：
+
+        - 你已阅读 `CONTRIBUTING.md`
+        - 这不是“如何使用”的支持类问题；如果是，请改用 `Support request`
+        - 这不是安全漏洞；若涉及安全问题，请改走 `SECURITY.md`
+        - 你已在本地执行 `npm run check:strict`
+  - type: input
+    id: summary
+    attributes:
+      label: 问题摘要
+      description: 用一句话说明问题现象。
+      placeholder: 例如：登录成功后顶部用户区布局错位
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 复现步骤
+      description: 请给出清晰、可重复的操作步骤。
+      placeholder: |
+        1. 打开 ...
+        2. 点击 ...
+        3. 观察到 ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望结果
+      placeholder: 应该出现什么结果？
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      placeholder: 实际发生了什么？如有报错请贴出关键内容。
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 影响范围
+      description: 说明影响的是模板主干、某个示例页还是某段文档。
+      placeholder: 例如：`web/src/layout/AdminLayout.vue` / 登录页 / mock-server
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 操作系统、Node 版本、浏览器版本、启动方式等。
+      placeholder: |
+        - OS:
+        - Node:
+        - Browser:
+        - Command:
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: 自检结果
+      description: 请写明你执行过的检查和结果。
+      placeholder: |
+        - `npm run check:strict`: pass / fail
+        - 是否能稳定复现：
+        - 是否仅本地私有改动后出现：
+    validations:
+      required: true
+  - type: dropdown
+    id: regression
+    attributes:
+      label: 是否为回归问题
+      options:
+        - 不确定
+        - 是，之前正常现在异常
+        - 否，这是一直存在的问题
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: 补充信息
+      description: 可选，截图、日志、录屏链接、回归影响等。

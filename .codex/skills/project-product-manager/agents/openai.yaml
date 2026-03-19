@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Product Manager"
+  short_description: "将后台需求拆成页面方案、接口草案、边界说明和验收标准"
+  default_prompt: "Use $project-product-manager to turn this backend-admin request into a page plan, API draft, scope notes, and acceptance criteria for this repository."

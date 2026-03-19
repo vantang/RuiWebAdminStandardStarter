@@ -1,0 +1,113 @@
+import { createApp } from "vue";
+import {
+  ElAlert,
+  ElAside,
+  ElAvatar,
+  ElButton,
+  ElCard,
+  ElCheckbox,
+  ElCheckboxGroup,
+  ElCol,
+  ElContainer,
+  ElDatePicker,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElDialog,
+  ElDrawer,
+  ElEmpty,
+  ElForm,
+  ElFormItem,
+  ElHeader,
+  ElIcon,
+  ElInput,
+  ElInputNumber,
+  ElLoading,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElOption,
+  ElPagination,
+  ElProgress,
+  ElRadioButton,
+  ElRadioGroup,
+  ElRate,
+  ElResult,
+  ElRow,
+  ElScrollbar,
+  ElSelect,
+  ElSlider,
+  ElStep,
+  ElSteps,
+  ElSwitch,
+  ElTabPane,
+  ElTable,
+  ElTableColumn,
+  ElTabs,
+  ElTag,
+  ElTimeline,
+  ElTimelineItem,
+} from "element-plus";
+import App from "./App.vue";
+import router from "./router";
+import { pinia } from "./stores";
+import "element-plus/dist/index.css";
+import "./styles/base.css";
+import "./styles/admin.css";
+
+const app = createApp(App);
+const elementComponents = [
+  ElAlert,
+  ElAside,
+  ElAvatar,
+  ElButton,
+  ElCard,
+  ElCheckbox,
+  ElCheckboxGroup,
+  ElCol,
+  ElContainer,
+  ElDatePicker,
+  ElDescriptions,
+  ElDescriptionsItem,
+  ElDialog,
+  ElDrawer,
+  ElEmpty,
+  ElForm,
+  ElFormItem,
+  ElHeader,
+  ElIcon,
+  ElInput,
+  ElInputNumber,
+  ElMain,
+  ElMenu,
+  ElMenuItem,
+  ElOption,
+  ElPagination,
+  ElProgress,
+  ElRadioButton,
+  ElRadioGroup,
+  ElRate,
+  ElResult,
+  ElRow,
+  ElScrollbar,
+  ElSelect,
+  ElSlider,
+  ElStep,
+  ElSteps,
+  ElSwitch,
+  ElTabPane,
+  ElTable,
+  ElTableColumn,
+  ElTabs,
+  ElTag,
+  ElTimeline,
+  ElTimelineItem,
+];
+
+for (const component of elementComponents) {
+  app.component(component.name, component);
+}
+
+app.use(pinia);
+app.use(router);
+app.directive("loading", ElLoading.directive);
+app.mount("#app");

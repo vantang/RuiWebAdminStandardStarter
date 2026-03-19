@@ -1,0 +1,15 @@
+# <type>(<scope>): <summary>
+#
+# type 建议使用:
+# feat | fix | refactor | docs | style | chore | test
+#
+# 示例:
+# feat(auth): add login shell and route guards
+# fix(layout): replace sidebar toggle icon
+# docs(standards): add commit and branch conventions
+#
+# Why:
+#
+# What:
+#
+# Validation:

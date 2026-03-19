@@ -1,0 +1,14 @@
+{
+  "name": "rui-admin-standard-mock-server",
+  "version": "1.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "check:syntax": "node --check src/server.js && node --check src/data/demo.js",
+    "test:smoke": "node ./scripts/smoke.mjs",
+    "check": "npm run check:syntax && npm run test:smoke"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "rui-admin-standard-starter",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "check:strict": "npm --prefix web run check && npm --prefix mock-server run check",
+    "dev:start": "bash ./scripts/dev-start.sh",
+    "dev:stop": "bash ./scripts/dev-stop.sh",
+    "dev:status": "bash ./scripts/dev-status.sh",
+    "dev:restart": "bash ./scripts/dev-restart.sh",
+    "git:use-template": "git config commit.template .gitmessage.txt"
+  }
+}

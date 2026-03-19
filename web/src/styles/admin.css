@@ -1,0 +1,146 @@
+.page-shell {
+  padding: var(--layout-page-padding, 24px);
+}
+
+.page-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 22px 24px;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(31, 111, 235, 0.12), rgba(255, 255, 255, 0.96)), #ffffff;
+  box-shadow: var(--shadow-card);
+}
+
+.page-hero__title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.page-hero__subtitle {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.panel-card {
+  margin-bottom: 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.panel-card .el-card__header {
+  border-bottom: 1px solid rgba(15, 39, 70, 0.06);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.panel-title__name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.panel-title__desc {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 1fr);
+  gap: 18px;
+}
+
+.soft-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-600);
+  background: var(--brand-soft);
+}
+
+.info-muted {
+  color: var(--text-muted);
+}
+
+.section-stack > * + * {
+  margin-top: 18px;
+}
+
+.action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.drawer-section + .drawer-section {
+  margin-top: 24px;
+}
+
+@media (max-width: 1440px) {
+  .page-hero {
+    padding: 20px 22px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .page-hero {
+    padding: 18px 20px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .metric-grid,
+  .info-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 960px) {
+  .page-shell {
+    padding: 16px;
+  }
+
+  .page-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 18px;
+  }
+}

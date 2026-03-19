@@ -1,0 +1,87 @@
+name: Support request
+description: 询问如何使用、如何复用、如何改造，或报告文档说明不足。
+title: "[Support] "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        这个模板用于“使用帮助”和“文档支持”。
+
+        提交前请先确认：
+
+        - 如果是可稳定复现的缺陷，请改用 `Bug report`
+        - 如果是新能力建议，请改用 `Feature request`
+        - 如果涉及安全风险或敏感信息，请不要公开提交，改走 `SECURITY.md`
+        - 你已查看 `README.md`、`CONTRIBUTING.md` 和 `SUPPORT.md`
+  - type: input
+    id: summary
+    attributes:
+      label: 需求摘要
+      description: 用一句话说明你想获得什么帮助。
+      placeholder: 例如：如何把示例菜单替换成自己的业务模块
+    validations:
+      required: true
+  - type: dropdown
+    id: topic
+    attributes:
+      label: 问题类型
+      options:
+        - 启动与运行
+        - 模板复用与二次开发
+        - Mock 服务与接口联调
+        - 文档理解与规范说明
+        - GitHub 协作流程
+        - 其他
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 你的目标
+      description: 你想完成什么，或想达到什么结果？
+      placeholder: 描述最终目标，而不只是卡住的步骤。
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: 已尝试的内容
+      description: 请说明你查阅过什么、改过什么、执行过什么命令。
+      placeholder: |
+        - 已阅读：
+        - 已修改：
+        - 已执行命令：
+        - 目前结果：
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: 相关上下文
+      description: 提供相关路径、页面、模块、日志或截图，方便维护者判断。
+      placeholder: |
+        - 相关路径：
+        - 相关页面或模块：
+        - 错误信息或截图：
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境信息
+      description: 操作系统、Node 版本、浏览器版本、部署方式等。
+      placeholder: |
+        - OS:
+        - Node:
+        - Browser:
+        - Command:
+        - Deployment:
+    validations:
+      required: true
+  - type: checkboxes
+    id: ai_usage
+    attributes:
+      label: AI 使用情况
+      options:
+        - label: 我没有使用 AI 辅助
+        - label: 我使用了 AI 辅助，并已人工核对相关改动与结论

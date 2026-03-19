@@ -1,0 +1,16 @@
+# Default repository owner.
+# If this repository is published to GitHub, you can replace the email below
+# with a GitHub username or team such as `@your-org/platform`.
+* tangjian@msn.com
+
+# Frontend template
+/web/ tangjian@msn.com
+
+# Mock API and scripts
+/mock-server/ tangjian@msn.com
+/scripts/ tangjian@msn.com
+
+# Documentation and open-source governance
+/docs/ tangjian@msn.com
+/.github/ tangjian@msn.com
+/*.md tangjian@msn.com
