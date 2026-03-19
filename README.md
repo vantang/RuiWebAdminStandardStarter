@@ -88,15 +88,15 @@
 
 | 登录页 | 工作台 Dashboard |
 | --- | --- |
-| ![登录页预览](./output/playwright/brand-login.png) | ![工作台预览](./output/playwright/brand-dashboard.png) |
+| ![登录页预览](./docs/assets/screenshots/brand-login.png) | ![工作台预览](./docs/assets/screenshots/brand-dashboard.png) |
 
 | 用户管理页 | 表单页示例 |
 | --- | --- |
-| ![用户管理页预览](./output/playwright/users-page.png) | ![表单页预览](./output/playwright/form.png) |
+| ![用户管理页预览](./docs/assets/screenshots/users-page.png) | ![表单页预览](./docs/assets/screenshots/form.png) |
 
 | 列表页示例 | 详情页示例 |
 | --- | --- |
-| ![列表页预览](./output/playwright/list.png) | ![详情页预览](./output/playwright/detail.png) |
+| ![列表页预览](./docs/assets/screenshots/list.png) | ![详情页预览](./docs/assets/screenshots/detail.png) |
 
 ## 项目内置 Skills
 
