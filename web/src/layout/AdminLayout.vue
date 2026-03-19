@@ -3,6 +3,7 @@ import { computed, watch } from "vue";
 import { ElMessageBox } from "element-plus";
 import { useRoute, useRouter } from "vue-router";
 import {
+  ArrowDown,
   Close,
   DataAnalysis,
   DocumentCopy,
@@ -86,6 +87,11 @@ const visibleMenuGroups = computed(() =>
     .filter((group) => group.items.length > 0),
 );
 
+const userMenuActions = {
+  profile: "/account/profile",
+  password: "/account/password",
+};
+
 watch(
   () => route.fullPath,
   () => {
@@ -106,6 +112,19 @@ async function handleLogout() {
     router.push("/login");
   } catch {
     // Ignore cancel action.
+  }
+}
+
+async function handleUserCommand(command) {
+  if (command === "logout") {
+    await handleLogout();
+    return;
+  }
+
+  const targetPath = userMenuActions[command];
+
+  if (targetPath && targetPath !== route.path) {
+    router.push(targetPath);
   }
 }
 
@@ -198,19 +217,39 @@ function closeView(target) {
             <div class="workspace-card__value">{{ appStore.workspace.name }}</div>
           </div>
 
-          <div class="header-user">
-            <el-avatar class="header-user__avatar" :size="42">{{ userAvatarText }}</el-avatar>
-            <div class="header-user__meta">
-              <div class="header-user__name">{{ authStore.currentUser?.name || "-" }}</div>
-              <div class="header-user__role">{{ authStore.currentUser?.role || "-" }}</div>
-            </div>
-            <div class="header-user__actions">
-              <el-button link class="header-user__logout" @click="handleLogout">
-                <el-icon><SwitchButton /></el-icon>
-                退出登录
-              </el-button>
-            </div>
-          </div>
+          <el-dropdown class="header-user" trigger="click" placement="bottom-end" @command="handleUserCommand">
+            <button type="button" class="header-user__trigger" aria-label="打开账号菜单">
+              <el-avatar class="header-user__avatar" :size="40">{{ userAvatarText }}</el-avatar>
+              <div class="header-user__meta">
+                <div class="header-user__name">{{ authStore.currentUser?.name || "-" }}</div>
+                <div class="header-user__role">{{ authStore.currentUser?.role || "-" }}</div>
+              </div>
+              <el-icon class="header-user__caret"><ArrowDown /></el-icon>
+            </button>
+
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item command="profile">
+                  <span class="header-user__menu-item">
+                    <el-icon><UserFilled /></el-icon>
+                    个人中心
+                  </span>
+                </el-dropdown-item>
+                <el-dropdown-item command="password">
+                  <span class="header-user__menu-item">
+                    <el-icon><Key /></el-icon>
+                    修改密码
+                  </span>
+                </el-dropdown-item>
+                <el-dropdown-item command="logout" divided>
+                  <span class="header-user__menu-item">
+                    <el-icon><SwitchButton /></el-icon>
+                    退出登录
+                  </span>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
         </div>
       </el-header>
 
@@ -431,14 +470,39 @@ function closeView(target) {
 }
 
 .header-user {
+  min-width: 0;
+}
+
+.header-user__trigger {
   display: flex;
   align-items: center;
   gap: 12px;
-  min-width: 240px;
-  padding: 12px 16px;
-  border-radius: 18px;
+  min-width: 0;
+  max-width: 228px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 16px;
   background: rgba(240, 245, 252, 0.94);
   box-shadow: inset 0 0 0 1px rgba(15, 39, 70, 0.05);
+  color: inherit;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.header-user__trigger:hover {
+  background: rgba(235, 242, 251, 0.98);
+  box-shadow:
+    inset 0 0 0 1px rgba(31, 111, 235, 0.08),
+    0 10px 24px rgba(19, 47, 89, 0.08);
+  transform: translateY(-1px);
+}
+
+.header-user__trigger:focus-visible {
+  outline: 2px solid rgba(31, 111, 235, 0.28);
+  outline-offset: 2px;
 }
 
 .header-user__avatar {
@@ -450,6 +514,7 @@ function closeView(target) {
 .header-user__meta {
   min-width: 0;
   flex: 1;
+  text-align: left;
 }
 
 .header-user__name {
@@ -464,14 +529,14 @@ function closeView(target) {
   color: #70829a;
 }
 
-.header-user__actions {
-  display: flex;
-  align-items: center;
+.header-user__caret {
+  color: #35577c;
 }
 
-.header-user__logout {
-  padding: 0;
-  color: #35577c;
+.header-user__menu-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .bookmark-bar {
@@ -571,8 +636,8 @@ function closeView(target) {
 }
 
 @media (max-width: 960px) {
-  .header-user {
-    min-width: 0;
+  .header-user__trigger {
+    max-width: 200px;
   }
 
   .header-subtitle {
@@ -588,6 +653,11 @@ function closeView(target) {
 
   .header-right {
     justify-content: space-between;
+  }
+
+  .header-user__trigger {
+    width: 100%;
+    max-width: none;
   }
 
   .bookmark-bar__list {

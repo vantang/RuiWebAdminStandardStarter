@@ -35,6 +35,26 @@ const routes = [
         },
       },
       {
+        path: "/account/profile",
+        name: "account-profile",
+        component: () => import("@/views/account/ProfileView.vue"),
+        meta: {
+          requiresAuth: true,
+          title: "个人中心",
+          subtitle: "查看当前账号信息、权限范围与工作区归属",
+        },
+      },
+      {
+        path: "/account/password",
+        name: "account-password",
+        component: () => import("@/views/account/PasswordView.vue"),
+        meta: {
+          requiresAuth: true,
+          title: "修改密码",
+          subtitle: "维护当前账号密码与登录安全策略",
+        },
+      },
+      {
         path: "/examples/list",
         name: "example-list",
         component: () => import("@/views/examples/ListView.vue"),
