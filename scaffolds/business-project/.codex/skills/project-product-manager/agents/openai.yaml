@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Product Manager"
+  short_description: "为业务项目拆需求、列受影响文件和文档替换矩阵"
+  default_prompt: "Use $project-product-manager to turn this request into a business-project plan with an affected-file list, documentation replacement matrix, API draft, and acceptance criteria."

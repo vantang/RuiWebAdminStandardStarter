@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Developer"
+  short_description: "为业务项目实现代码、文档同步和模板残留清理"
+  default_prompt: "Use $project-developer to implement this change in the business project, sync the required docs, and check for template residue."

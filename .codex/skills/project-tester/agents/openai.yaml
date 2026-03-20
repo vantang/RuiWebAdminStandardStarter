@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Tester"
-  short_description: "为后台模板设计验证用例、回归范围和发布前检查项"
-  default_prompt: "Use $project-tester to turn this repository change into a validation plan, regression checklist, and release-readiness summary."
+  short_description: "为后台模板设计验证用例、文档一致性检查和模板残留检查"
+  default_prompt: "Use $project-tester to turn this repository change into a validation plan, regression checklist, documentation-consistency review, and template-residue summary."

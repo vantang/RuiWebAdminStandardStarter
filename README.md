@@ -9,7 +9,7 @@
 - 技术栈基线：`Vue 3 + Vite + Element Plus + Apache ECharts + Pinia + Vue Router`
 - 结构基线：`web + mock-server + docs + site`
 - 设计基线：后台布局、卡片、表格、表单、详情、组件展示
-- 文档基线：规范说明、技术方案、接口示例、模板文档
+- 文档基线：规范说明、技术方案、接口示例、测试验收文档、模板文档、示例包
 
 ## 开源授权
 
@@ -56,14 +56,17 @@
 
 ```text
 .
-├── .codex/skills          # 项目级 AI 协作 skills
+├── .codex/skills          # 模板仓库维护用 AI 协作 skills
 ├── docs
 │   ├── api                 # 通用后台 DEMO 接口说明
+│   ├── examples            # 业务项目启动示例包
+│   ├── qa                  # 业务项目测试与验收文档
 │   ├── standards           # 技术、设计、代码、文档规范
 │   ├── tech                # 模板工程技术方案
 │   ├── templates           # 可直接复制的文档模板
 │   └── README.md           # 文档目录总览
 ├── mock-server             # 通用后台 DEMO Mock API
+├── scaffolds               # 业务项目初始化资产与 AI skills 包
 ├── scripts                 # 一键启动、停止、状态检查脚本
 ├── site                    # 对外官网 landing page（GitHub Pages）
 └── web                     # Vue 后台前端 DEMO
@@ -123,18 +126,65 @@
 - `$project-developer`：按当前仓库规范实现 `web`、`mock-server`、`docs` 的具体改动
 - `$project-tester`：为改动补测试点、回归范围、发布前检查项，并映射到实际验证动作
 
-这些 skills 位于 `.codex/skills/`，并直接引用当前仓库的规范与模板。推荐配合以下模板一起使用：
+这些 skills 位于 `.codex/skills/`，默认服务于“模板仓库自身维护”。如果你已经复制本仓库并把新仓库作为真实业务项目使用，建议在业务仓库根目录执行：
 
+```bash
+bash ./scripts/init-business-project.sh .
+```
+
+该脚本会把 `scaffolds/business-project/.codex/skills/` 里的业务项目版 skills 安装到当前仓库，避免 Codex 继续把业务仓库当成模板展示仓库来处理。
+
+脚本默认只允许首次执行一次；如果确实需要重跑，必须显式使用：
+
+```bash
+bash ./scripts/init-business-project.sh --force .
+```
+
+无论是模板仓库还是业务项目仓库，都推荐配合以下模板一起使用：
+
+- `docs/templates/业务项目README模板.md`
+- `docs/templates/业务项目技术方案模板.md`
+- `docs/templates/业务项目接口文档模板.md`
+- `docs/templates/业务项目测试验收模板.md`
 - `docs/templates/需求拆解模板.md`
 - `docs/templates/页面方案模板.md`
 - `docs/templates/API设计模板.md`
 - `docs/templates/测试验证模板.md`
+- `docs/templates/AI业务项目启动提示词模板.md`
+- `docs/templates/业务项目初始化清单.md`
+- `docs/templates/模板残留检查清单.md`
 
 典型用法示例：
 
 - `用 $project-product-manager 把“客户审批页”拆成页面方案、接口草案和验收标准`
 - `用 $project-developer 在这个模板里补一个新的列表页，并同步补 mock`
 - `用 $project-tester 给这次改动输出一份回归验证清单`
+
+## AI 使用入口
+
+如果你要把本仓库复制成一个真实业务项目，建议先看以下文件，再开始让 AI 改代码：
+
+- `docs/examples/README.md`
+- `docs/templates/业务项目README模板.md`
+- `docs/templates/业务项目技术方案模板.md`
+- `docs/templates/业务项目接口文档模板.md`
+- `docs/templates/业务项目测试验收模板.md`
+- `docs/standards/07-AI协作与业务化替换规范.md`
+- `docs/templates/AI业务项目启动提示词模板.md`
+- `docs/templates/业务项目初始化清单.md`
+- `docs/templates/模板残留检查清单.md`
+
+推荐顺序：
+
+1. 先用 `业务项目初始化清单` 确认仓库身份和必改范围。
+2. 先阅读 `docs/examples/README.md`，了解示例文档包的完成形态。
+3. 再用 `业务项目README模板` 写出当前业务仓库的首版 README。
+4. 参考 `业务项目技术方案模板` 写出 `docs/tech/` 下的首版技术方案文档。
+5. 参考 `业务项目接口文档模板` 写出 `docs/api/` 下的首版接口文档。
+6. 参考 `业务项目测试验收模板` 规划并落稿 `docs/qa/` 下的首版测试与验收文档。
+7. 然后用 `AI业务项目启动提示词模板` 让 AI 先输出“受影响文件清单”和“文档替换矩阵”。
+8. 再进入页面、路由、接口、Mock 和文档实现。
+9. 最后用 `模板残留检查清单` 与 `$project-tester` 做收尾检查。
 
 ## 启动
 
@@ -212,11 +262,17 @@ npm run check:strict
 ## 推荐的复用流程
 
 1. 复制仓库并重命名项目。
-2. 先修改 `docs/standards` 中的项目级说明和约束。
-3. 保留 `web/src/layout`、`web/src/styles`、`web/src/router` 作为骨架。
-4. 用真实业务页面替换 `web/src/views/examples` 下的示例页面。
-5. 在前期联调阶段保留 `mock-server`，后期再替换成真实后端。
-6. 把交付文档按 `docs` 目录结构继续沉淀。
+2. 如果新仓库是“真实业务项目”，先执行 `bash ./scripts/init-business-project.sh .`，把本地 AI skills 切换成业务项目版本。
+3. 先完成 `docs/templates/业务项目初始化清单.md`，明确哪些文件必须业务化替换。
+4. 如需参考完整成品，先阅读 `docs/examples/README.md` 与示例文档包。
+5. 参考 `docs/templates/业务项目README模板.md`，先写出当前业务仓库的首版 README。
+6. 参考 `docs/templates/业务项目技术方案模板.md`，补齐 `docs/tech/` 下的首版技术方案。
+7. 参考 `docs/templates/业务项目接口文档模板.md`，补齐 `docs/api/` 下的首版接口文档。
+8. 参考 `docs/templates/业务项目测试验收模板.md`，在 `docs/qa/` 下补齐首版测试与验收文档。
+9. 再用 `docs/templates/AI业务项目启动提示词模板.md` 产出“受影响文件清单”和“文档替换矩阵”。
+10. 保留 `web/src/layout`、`web/src/styles`、`web/src/router` 作为骨架，用真实业务页面替换 `web/src/views/examples` 下的示例页面。
+11. 在前期联调阶段保留 `mock-server`，后期再替换成真实后端。
+12. 收尾时执行模板残留检查，确认 `README`、`docs/tech`、`docs/api`、页面文案和示例数据都已与当前业务一致。
 
 ## 提交规范
 

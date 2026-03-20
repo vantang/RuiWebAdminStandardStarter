@@ -19,10 +19,14 @@
 
 ## Validation
 
+- [ ] 已输出受影响文件清单
 - [ ] 已执行 `npm run check:strict`
 - [ ] 已进行必要的手工验证
 - [ ] 已评估是否影响现有示例页、Mock 数据或文档说明
 - [ ] 已同步更新相关文档，或明确说明无需更新
+- [ ] 已核对 `README / docs/tech / docs/api` 与当前实现一致
+- [ ] 已完成模板残留扫描
+- [ ] 未修改但受影响的文件已说明原因
 
 ## Screenshots or Recordings
 

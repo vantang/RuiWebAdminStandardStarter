@@ -1,4 +1,4 @@
 interface:
   display_name: "Project Developer"
-  short_description: "按仓库规范实现后台页面、接口、Mock 和文档改动"
-  default_prompt: "Use $project-developer to implement this change in the repository while preserving the starter's structure, standards, and validation flow."
+  short_description: "按仓库规范实现后台页面、接口、Mock、文档和模板残留清理"
+  default_prompt: "Use $project-developer to implement this change in the repository while preserving the starter's structure, syncing the required docs, and checking for template residue."

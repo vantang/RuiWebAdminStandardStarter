@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Tester"
+  short_description: "为业务项目做验证、文档一致性检查和模板残留检查"
+  default_prompt: "Use $project-tester to validate this business-project change, including regression checks, documentation consistency, and template-residue review."
