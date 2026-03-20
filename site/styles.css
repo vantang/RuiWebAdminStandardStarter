@@ -636,10 +636,15 @@ img {
 
 .site-footer {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-end;
   justify-content: space-between;
   gap: 20px;
   padding: 46px 0 12px;
+}
+
+.site-footer__main {
+  flex: 1 1 420px;
 }
 
 .site-footer strong {
@@ -649,6 +654,94 @@ img {
 .site-footer p {
   max-width: 560px;
   margin: 10px 0 0;
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 0 1 auto;
+}
+
+.footer-bottom {
+  width: 100%;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.footer-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.footer-note {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.footer-social,
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  color: var(--text-body);
+  opacity: 0.86;
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.footer-icon-link:hover,
+.footer-icon-link:focus-visible {
+  color: var(--accent-deep);
+  opacity: 1;
+  border-color: rgba(31, 111, 235, 0.22);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 10px 24px rgba(31, 111, 235, 0.1);
+  transform: translateY(-1px);
+}
+
+.footer-icon-link svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: 0 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .footer-links a {
@@ -758,5 +851,21 @@ img {
   .site-footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .footer-actions {
+    align-items: flex-start;
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-social,
+  .footer-links {
+    justify-content: flex-start;
   }
 }
